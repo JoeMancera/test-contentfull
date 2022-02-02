@@ -6,10 +6,13 @@ import Layout from '../components/layout'
 import Hero from '../components/hero'
 import ArticlePreview from '../components/article-preview'
 
+import { GatsbyImage } from 'gatsby-plugin-image'
+
 class RootIndex extends React.Component {
   render() {
     const posts = get(this, 'props.data.allContentfulBlogPost.nodes')
     const [author] = get(this, 'props.data.allContentfulPerson.nodes')
+    const hero = get(this, 'props.data.allContentfulHero.nodes[0]')
 
     return (
       <Layout location={this.props.location}>
@@ -18,6 +21,7 @@ class RootIndex extends React.Component {
           title={author.name}
           content={author.shortBio.shortBio}
         />
+        <GatsbyImage className='Hero' alt={hero.heroTitle} image={hero.heroImage.gatsbyImageData} />
         <ArticlePreview posts={posts} />
       </Layout>
     )
@@ -64,6 +68,29 @@ export const pageQuery = graphql`
             placeholder: BLURRED
             width: 1180
           )
+        }
+      }
+    }
+    allContentfulHero {
+      nodes {
+        heroTitle
+        heroImage {
+          file {
+            contentType
+            url
+            fileName
+          }
+        }
+        heroImage {
+            gatsbyImageData(
+              layout: CONSTRAINED
+              placeholder: BLURRED
+              width: 1180
+            )
+          }
+        sys {
+          type
+          revision
         }
       }
     }
