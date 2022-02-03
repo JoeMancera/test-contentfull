@@ -43,8 +43,7 @@ export const pageQuery = graphql`
           gatsbyImageData(
             layout: CONSTRAINED
             placeholder: BLURRED
-            width: 424
-            height: 212
+            width: 1024
           )
         }
         sys {
@@ -65,7 +64,8 @@ export const pageQuery = graphql`
           gatsbyImageData(
             layout: CONSTRAINED
             placeholder: BLURRED
-            width: 1180
+            width: 424
+            height: 212
           )
         }
       }

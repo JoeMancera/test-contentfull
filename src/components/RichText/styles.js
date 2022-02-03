@@ -1,8 +1,7 @@
 import styled from 'styled-components'
 
 export const RichTextContainer = styled.div`
-  font-size: 14px;
-  padding: 0 12px;
+  font-size: var(--text-size-md);
 `
 export const Bold = styled.b`
   font-size: 18px;
