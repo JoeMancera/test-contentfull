@@ -1,16 +1,20 @@
 import React from 'react'
+import { Search } from '../Search'
 import { Project } from '../Project'
-import { ListOfItems } from './styles'
+import { ContainerItems } from './styles'
 
 export const ProjectList = ({ projects }) => {
   if (!projects) return null
   if (!Array.isArray(projects)) return null
 
   return (
-    <ListOfItems>
-      {projects.map((project) => {
-        return <Project key={project.id} project={project} />
-      })}
-    </ListOfItems>
+    <>
+      <Search />
+      <ContainerItems>
+        {projects.map((project) => {
+          return <Project key={project.id} project={project} />
+        })}
+      </ContainerItems>
+    </>
   )
 }
